@@ -14,5 +14,10 @@
 #
 
 class Transaction < ApplicationRecord
+  attribute :user_id, :integer
+  attribute :date, :date
+  attribute :role, :string
+  attribute :category, :string
+  attribute :amount, :float
   belongs_to :user
 end

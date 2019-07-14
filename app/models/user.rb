@@ -12,6 +12,10 @@
 #
 
 class User < ApplicationRecord
+  attribute :email, :string
+  attribute :password_digest, :string
+  attribute :name, :string
+  attribute :role, :string
   has_secure_password
   validates :email, presence: true, uniqueness: true
 end
