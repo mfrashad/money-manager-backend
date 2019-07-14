@@ -20,4 +20,44 @@ class Transaction < ApplicationRecord
   attribute :category, :string
   attribute :amount, :float
   belongs_to :user
+
+  def create
+    super
+  end
+
+  def update
+    super
+  end
+
+  def delete
+    self.destroy
+  end
+
+  def setAmount(amount)
+    self.amount = amount
+  end
+
+  def getAmount
+    self.amount
+  end
+
+  def setType(type)
+    self.role = type
+  end
+
+  def getType
+    self.role
+  end
+
+  def setCategory(category)
+    self.category = category
+  end
+
+  def getCategory
+    self.category
+  end
+
+  def getTransactions
+    Transaction.all
+  end
 end
