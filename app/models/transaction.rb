@@ -21,11 +21,11 @@ class Transaction < ApplicationRecord
   attribute :amount, :float
   belongs_to :user
 
-  def create
+  def self.create
     super
   end
 
-  def update
+  def self.update
     super
   end
 
@@ -57,7 +57,7 @@ class Transaction < ApplicationRecord
     self.category
   end
 
-  def getTransactions
+  def self.getTransactions
     Transaction.all
   end
 end
