@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :transactions
-  root "home#index"
   
+  root "home#index"
+
+  resources :transactions
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   get "signup", to: "users#new", as: "signup"
