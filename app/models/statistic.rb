@@ -1,6 +1,9 @@
 class Statistic
-  def generate(userId)
+  def self.generate(userId)
     transactions = Transaction.getTransactions()
-    transactions.where(user: userId).group(:date).sum(:amount)
+    date = transactions.where(user: userId).group(:date).sum(:amount)
+    category = transactions.where(user: userId).group(:category).sum(:amount)
+    total = transactions.where(user: userId).group(:role).sum(:amount)
+    return statistic = {date: date, category: category, total: total}
   end
 end
