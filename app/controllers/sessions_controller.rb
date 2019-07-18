@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
   def create
     user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    if user && user.login(params[:password])
       session[:user_id] = user.id
       if params[:json]
         render json: user
@@ -11,8 +11,12 @@ class SessionsController < ApplicationController
         redirect_to root_url, notice: "Logged in!"
       end
     else
-      flash.now[:alert] = "Email or password is invalid"
-      render "new"
+      if params[:json]
+        render json: {"authentication":false, "error": "Email or password is invalid"} 
+      else
+        flash.now[:alert] = "Email or password is invalid"
+        render "new"
+      end
     end
   end
   def destroy
